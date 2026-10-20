@@ -31,3 +31,20 @@ Skript: scripts/Get-AppPermissions.ps1 → output/<datum>/app-permissions.csv
 | Microsoft Graph Command Line Tools | Piccard | Ja | Ta bort org-consent |
 
 Fynd: Graph CLI fick admin-consent för alla användare vid första inloggning – bocka inte i "Consent on behalf of organization".
+
+## 2026-10-20 – External access
+
+Skript: scripts/Get-ExternalAccess.ps1 → guests.csv
+- Security defaults: AV. Ingen P1. → Ingen tenant-wide MFA-tvingning. (HÖG)
+- SharePoint sharing: externalUserAndGuestSharing (Anyone-länkar), ingen expiry. (HÖG)
+- Gäster: 19, 14 domäner. Utred: ylocap.se.
+
+## 2026-10-20 – Steg 3 klart
+
+Invoke-M365Audit.ps1 kör alla fyra skript, ~100 s.
+Huvudfynd:
+- 14 av 35 aktiva medlemmar saknar MFA (40 %). Security defaults av, ingen P1 → inget tvingar MFA. (HÖG)
+- Anyone-länkar på i SharePoint, ingen expiry. (HÖG)
+- 27 consent grants med breda scopes; Mailagent Erik, CloudDuplicateFinder, Mailmeteor Dev, Unipile att utreda. (MEDEL)
+- Gäst från ylocap.se att utreda. (MEDEL)
+Lärdom: Out-Host i wrapper, Format-Table bara sist i kedjan.
