@@ -19,7 +19,7 @@ with open(latest / "users.csv", encoding="utf-8-sig") as f:   # utf-8-sig strips
 total    = len(users)
 guests   = len([u for u in users if u["UserType"] == "Guest"])
 disabled = len([u for u in users if u["Enabled"] == "False"])
-unlicensed_active = len([u for u in users if u["Enabled"] == "True" and u["Licenses"] == ""])
+unlicensed_active = len([u for u in users if u["Enabled"] == "True" and u["Licenses"] == "" and u["UserType"] == "Member"])
 
 print(f"Users: {total}")
 print(f"Guests: {guests}")
