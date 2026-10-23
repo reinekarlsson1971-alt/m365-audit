@@ -48,3 +48,9 @@ Huvudfynd:
 - 27 consent grants med breda scopes; Mailagent Erik, CloudDuplicateFinder, Mailmeteor Dev, Unipile att utreda. (MEDEL)
 - Gäst från ylocap.se att utreda. (MEDEL)
 Lärdom: Out-Host i wrapper, Format-Table bara sist i kedjan.
+
+## 2026-10-23 – Python start
+
+- Python venv uppsatt (.venv), aktiveras med .\.venv\Scripts\Activate.ps1
+- report/summarize.py läser senaste users.csv och räknar
+- Aktiva olicensierade medlemmar: 20
