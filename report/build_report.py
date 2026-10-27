@@ -2,10 +2,12 @@
 # Reads the latest audit CSVs and writes a markdown report with findings. No API calls yet.
 
 import csv
+import os
 from pathlib import Path
 from datetime import date
 
-OUTPUT_DIR = Path(__file__).parent.parent / "output"
+# Output folder: from the OUTPUT_DIR environment variable if set (Docker), otherwise ../output relative to this file
+OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", Path(__file__).parent.parent / "output"))
 latest = sorted(OUTPUT_DIR.iterdir())[-1]
 
 
