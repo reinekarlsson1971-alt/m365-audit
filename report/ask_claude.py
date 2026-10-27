@@ -34,7 +34,9 @@ response = client.messages.create(
     messages=[{"role": "user", "content": PROMPT}],
 )
 
-answer = response.content[0].text  # response.content is a list of blocks; the first is the text
+# response.content is a list of blocks. Some models return a "thinking" block before the "text" block,
+# so filter on type instead of assuming position.
+answer = "\n".join(block.text for block in response.content if block.type == "text")
 
 out_path = latest / "recommendations.md"
 out_path.write_text(answer, encoding="utf-8")
